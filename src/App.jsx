@@ -1,11 +1,24 @@
 import PersonList from "./PersonsList";
+import Img from "./Rick_and_Morty.svg";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import CharacterInfo from "./CharacterInfo";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <PersonList id="11" last={12}></PersonList>
-    </>
-  );
-}
+    <Router>
+      <Link to="/">
+        <img src={Img} className="mx-auto" alt="logo" />
+      </Link>
+      <Switch>
+        <Route path="/" exact>
+          <PersonList />
+        </Route>
 
+        <Route path="/character/:id">
+          <CharacterInfo />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
 export default App;
