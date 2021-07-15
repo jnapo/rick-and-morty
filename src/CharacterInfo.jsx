@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Character from "./Character";
 import { useParams } from "react-router-dom";
@@ -10,17 +10,6 @@ const CharacterInfo = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // axios
-      //   .get(`https://rickandmortyapi.com/api/character/${params.id}`)
-      //   .then((res) => {
-      //     console.log(params);
-      //     setInfo(res.data);
-
-      //     console.log(characterInfo.episode[0]);
-      //   })
-      //   .catch((err) => {
-      //     console.error(err);
-      //   });
       const { data: character } = await axios.get(
         `https://rickandmortyapi.com/api/character/${params.id}`
       );
@@ -29,11 +18,9 @@ const CharacterInfo = () => {
 
       setInfo(character);
       setEpisode(episode);
-
-      console.log(episode.name);
     };
     fetchData();
-  }, [params, episode]);
+  }, [params]);
 
   if (!characterInfo) {
     return <span>Loading</span>;
@@ -51,9 +38,6 @@ const CharacterInfo = () => {
         firstEpisode={episode?.name}
       ></Character>
     </div>
-    // <div>
-    //    {JSON.stringify(params, 0, 2)}, {params.id}
-    // </div> data && <List arr={data}
   );
 };
 
