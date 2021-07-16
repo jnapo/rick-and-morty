@@ -5,7 +5,7 @@ import CharacterInfo from "./CharacterInfo";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Link to="/">
         <img src={Img} className="mx-auto" alt="logo" />
       </Link>
